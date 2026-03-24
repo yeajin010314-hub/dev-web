@@ -3,12 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>Modern Lotto Generator | 프리미엄 로또 번호 생성기</title>
   <link href='/style.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <div class="background-texture"></div>
+  <main class="container">
+    <header class="header">
+      <h1 class="title">
+        <span class="en">Lotto Number Generator</span>
+        <span class="ko">로또 번호 생성기</span>
+      </h1>
+      <p class="subtitle">
+        <span class="en">Experience the magic of randomness</span>
+        <span class="ko">행운을 부르는 특별한 번호를 만나보세요</span>
+      </p>
+    </header>
+
+    <section class="generator-card">
+      <div id="ball-container" class="ball-container">
+        <!-- Lotto balls will be generated here -->
+      </div>
+      <div class="action-group">
+        <button id="generate-btn" class="generate-btn">
+          <span class="en">Generate Numbers</span>
+          <span class="ko">번호 생성하기</span>
+        </button>
+        <button id="copy-btn" class="copy-btn" title="Copy to clipboard" style="display: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <h2 class="section-title">
+        <span class="en">Lucky History</span>
+        <span class="ko">최근 행운 번호</span>
+      </h2>
+      <div id="history-list" class="history-list">
+        <!-- History items will be added here -->
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2026 Modern Lotto. <span class="en">All rights reserved.</span><span class="ko">모든 권리 보유.</span></p>
+    </footer>
+  </main>
+  <script defer type="module" src="/main.js"></script>
 </body>
 </html>

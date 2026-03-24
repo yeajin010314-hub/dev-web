@@ -1,1 +1,243 @@
-/* Add styles here */
+@layer base, layout, components, utilities, animations;
+
+@layer base {
+  :root {
+    --bg-color: oklch(0.99 0.005 240);
+    --card-bg: oklch(1 0 0);
+    --primary: oklch(0.6 0.22 260);
+    --primary-hover: oklch(0.55 0.22 260);
+    --text-main: oklch(0.2 0.02 240);
+    --text-muted: oklch(0.45 0.02 240);
+    --shadow-color: oklch(0 0 0 / 0.08);
+    --ball-size: 3.5rem;
+    --ball-shadow: oklch(0 0 0 / 0.15);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', 'Noto Sans KR', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* Bilingual display */
+  .en { display: block; font-size: 0.85em; }
+  .ko { display: block; font-weight: 700; }
+}
+
+@layer layout {
+  .background-texture {
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, oklch(0.9 0.1 260 / 0.15), transparent 40%),
+      radial-gradient(circle at 80% 80%, oklch(0.8 0.1 320 / 0.15), transparent 40%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .container {
+    inline-size: min(100% - 2rem, 700px);
+    margin-inline: auto;
+    padding-block: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    flex: 1;
+  }
+
+  .header {
+    text-align: center;
+    .title {
+      font-size: clamp(2rem, 8cvi, 3.5rem);
+      line-height: 1.1;
+      margin-block-end: 1rem;
+      background: linear-gradient(135deg, var(--primary), oklch(0.6 0.25 320));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      .en { font-size: 0.4em; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.7; -webkit-text-fill-color: var(--text-muted); }
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      .en { font-size: 0.8em; }
+    }
+  }
+
+  .footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding-block: 2rem;
+    opacity: 0.6;
+    .en { display: inline; margin-right: 0.5rem; }
+    .ko { display: inline; }
+  }
+}
+
+@layer components {
+  .generator-card {
+    background: var(--card-bg);
+    padding: 3.5rem 2rem;
+    border-radius: 3rem;
+    box-shadow: 
+      0 10px 30px var(--shadow-color),
+      0 30px 60px oklch(0 0 0 / 0.05),
+      inset 0 0 0 1px oklch(1 0 0 / 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.8), transparent);
+    }
+  }
+
+  .ball-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+    min-height: calc(var(--ball-size) + 1rem);
+    inline-size: 100%;
+  }
+
+  .action-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .generate-btn {
+    appearance: none;
+    border: none;
+    padding: 1.25rem 3rem;
+    border-radius: 1.5rem;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 25px oklch(0.6 0.22 260 / 0.3);
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px oklch(0.6 0.22 260 / 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    .en { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.9; margin-bottom: 2px; }
+  }
+
+  .copy-btn {
+    appearance: none;
+    background: oklch(0.95 0.01 240);
+    border: 1px solid oklch(0.9 0.02 240);
+    color: var(--text-muted);
+    padding: 1rem;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: grid;
+    place-items: center;
+
+    &:hover {
+      background: oklch(0.9 0.02 240);
+      color: var(--text-main);
+    }
+  }
+
+  .history-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeIn 1s ease forwards;
+
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .en { font-size: 0.6em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    }
+  }
+
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .history-item {
+    background: oklch(1 0 0 / 0.6);
+    backdrop-filter: blur(10px);
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid oklch(0.9 0.01 240);
+    animation: slideUp 0.5s ease-out forwards;
+    box-shadow: 0 4px 12px var(--shadow-color);
+  }
+
+  .history-balls {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .history-timestamp {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+}
+
+@layer animations {
+  @keyframes popIn {
+    0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+    70% { transform: scale(1.1) rotate(5deg); }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer utilities {
+  .glow {
+    box-shadow: 0 0 20px currentColor;
+  }
+}
