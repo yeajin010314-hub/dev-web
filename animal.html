@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Animal Face Test | 인공지능 동물상 테스트</title>
+  <link href='/style.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-texture"></div>
+  <nav class="nav-bar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="ko">🍀 행운로또 & AI</span>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link">
+          <span class="en">Lotto</span>
+          <span class="ko">번호 생성</span>
+        </a>
+        <a href="/animal.html" class="nav-link active">
+          <span class="en">Animal Test</span>
+          <span class="ko">동물상 테스트</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="header">
+      <h1 class="title">
+        <span class="en">AI Animal Face Test</span>
+        <span class="ko">인공지능 동물상 테스트</span>
+      </h1>
+      <p class="subtitle">
+        <span class="en">Find out which animal you look like</span>
+        <span class="ko">당신은 어떤 동물을 닮았나요? AI가 분석해드립니다.</span>
+      </p>
+    </header>
+
+    <section class="animal-test-card">
+      <div class="input-controls">
+        <button id="webcam-btn" class="input-btn active">
+          <span class="en">Use Webcam</span>
+          <span class="ko">웹캠 사용하기</span>
+        </button>
+        <button id="upload-btn" class="input-btn">
+          <span class="en">Upload Image</span>
+          <span class="ko">사진 업로드</span>
+        </button>
+      </div>
+
+      <div class="media-container">
+        <!-- Webcam or uploaded image will appear here -->
+        <div id="webcam-container" class="preview-box"></div>
+        <div id="image-container" class="preview-box" style="display: none;">
+          <input type="file" id="file-input" accept="image/*" style="display: none;">
+          <div class="upload-placeholder" onclick="document.getElementById('file-input').click()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <p><span class="en">Click to upload photo</span><span class="ko">사진을 클릭하여 업로드하세요</span></p>
+          </div>
+          <img id="face-image" src="#" alt="your image" style="display: none; width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+
+      <div class="result-section">
+        <h3 id="top-prediction" class="top-result">
+          <span class="en">Awaiting analysis...</span>
+          <span class="ko">분석 대기 중...</span>
+        </h3>
+        <div id="label-container" class="label-container">
+          <!-- Animated progress bars for results will go here -->
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2026 Modern AI. <span class="en">Powered by Teachable Machine.</span><span class="ko">인공지능 모델 기반.</span></p>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <script defer type="module" src="/animal.js"></script>
+</body>
+</html>

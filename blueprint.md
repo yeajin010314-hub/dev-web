@@ -1,25 +1,24 @@
-# Modern Lotto Generator Project Blueprint
+# Modern Lotto & AI Animal Test Project Blueprint
 
 ## Project Overview
-A premium, bilingual (Korean/English) web application that generates 6 unique random numbers (1-45) for the lottery. The design features a visually stunning and highly interactive interface, utilizing modern web standards (Baseline) for a "wow" experience.
+A premium, bilingual (Korean/English) web application suite featuring:
+1.  **Lotto Number Generator**: A visually stunning 6-number generator (1-45) with animated reveal and history.
+2.  **AI Animal Face Test**: An interactive image recognition tool that predicts the user's "animal type" using a Teachable Machine model.
 
 ## Project Outline
-- **Purpose**: Provide a simple yet beautiful way to generate and track lotto numbers.
-- **Style**: Modern, premium, tactile, with vibrant oklch gradients and deep multi-layered shadows.
+- **Purpose**: Provide entertainment and utility through modern web technology and AI.
+- **Style**: Modern, premium, tactile, with animated oklch mesh gradients and glassmorphism.
 - **Design**:
-    - Hero section with the generator and "pop-in" animations.
-    - Bilingual support (Korean/English).
-    - "Lucky History" section with persistent storage (`localStorage`).
-    - Subtle noise texture and glowing interactive elements.
+    - Sticky bilingual navigation bar.
+    - Animated "pop-in" components.
+    - Result-driven layouts with visual progress bars for AI predictions.
 - **Features**:
-    - Random number generation (6 numbers, 1-45, no duplicates, sorted).
-    - Copy to Clipboard functionality.
-    - Persistent history of previous generations.
-    - **Partnership Contact Form (powered by Formspree)**.
-    - Modern CSS features (Cascade Layers, Logical Properties, `:has()`, Container Queries).
-    - Web Components for encapsulation.
+    - **Lotto**: Unique random generation, history persistence (`localStorage`), and copy to clipboard.
+    - **Animal Test**: Webcam & file upload support, real-time AI prediction, and animated confidence scores.
+    - **Partnership**: Formspree-powered contact form.
 
 ## Current Project Plan
-1.  **Update `index.html`**: Add the partnership contact form section.
-2.  **Update `style.css`**: Style the form to match the premium aesthetic.
-3.  **Update `main.js`**: Add simple form handling if necessary.
+1.  **Create `animal.html`**: Build the structure for the AI test interface.
+2.  **Create `animal.js`**: Implement Teachable Machine integration (webcam + file picker).
+3.  **Update `style.css`**: Add styles for result bars, upload zones, and AI test cards.
+4.  **Update `index.html`**: Add "Animal Test" link to the navigation bar.
