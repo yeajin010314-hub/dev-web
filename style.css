@@ -216,6 +216,89 @@
     font-size: 0.8rem;
     color: var(--text-muted);
   }
+
+  .contact-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    animation: fadeIn 1s ease forwards;
+    background: oklch(1 0 0 / 0.4);
+    padding: 3rem 2rem;
+    border-radius: 2.5rem;
+    border: 1px solid oklch(0.9 0.01 240);
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 1.5rem;
+    inline-size: 100%;
+    max-inline-size: 500px;
+    margin-inline: auto;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        display: flex;
+        flex-direction: column;
+        .en { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.05em; }
+      }
+
+      input, textarea {
+        appearance: none;
+        background: white;
+        border: 1px solid oklch(0.9 0.02 240);
+        padding: 1rem 1.25rem;
+        border-radius: 1rem;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        color: var(--text-main);
+
+        &:focus {
+          outline: none;
+          border-color: var(--primary);
+          box-shadow: 0 0 0 4px oklch(0.6 0.22 260 / 0.1);
+        }
+
+        &::placeholder {
+          color: oklch(0.7 0.02 240);
+        }
+      }
+
+      textarea {
+        resize: vertical;
+      }
+    }
+
+    .submit-btn {
+      appearance: none;
+      border: none;
+      padding: 1.1rem;
+      border-radius: 1.25rem;
+      background: var(--text-main);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+
+      &:hover {
+        background: black;
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      .en { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.8; margin-bottom: 2px; }
+    }
+  }
 }
 
 @layer animations {

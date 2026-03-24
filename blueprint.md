@@ -15,13 +15,11 @@ A premium, bilingual (Korean/English) web application that generates 6 unique ra
     - Random number generation (6 numbers, 1-45, no duplicates, sorted).
     - Copy to Clipboard functionality.
     - Persistent history of previous generations.
+    - **Partnership Contact Form (powered by Formspree)**.
     - Modern CSS features (Cascade Layers, Logical Properties, `:has()`, Container Queries).
     - Web Components for encapsulation.
 
 ## Current Project Plan
-1.  **Update `index.html`**: Revise the layout for bilingual support and add the history section.
-2.  **Update `style.css`**: Implement premium, animated styles using Cascade Layers and modern color spaces.
-3.  **Update `main.js`**:
-    - Enhance `<lotto-ball>` component with gloss and glow.
-    - Implement the generation logic with history tracking and persistence.
-    - Add Copy to Clipboard functionality.
+1.  **Update `index.html`**: Add the partnership contact form section.
+2.  **Update `style.css`**: Style the form to match the premium aesthetic.
+3.  **Update `main.js`**: Add simple form handling if necessary.
