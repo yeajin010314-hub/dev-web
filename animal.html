@@ -66,6 +66,23 @@
         </div>
       </div>
 
+      <div class="analyze-action" style="display: none;" id="analyze-action">
+        <button id="predict-btn" class="generate-btn">
+          <span class="en">Check Result</span>
+          <span class="ko">분석하기</span>
+        </button>
+      </div>
+
+      <div class="model-upload-section" id="model-loader">
+        <p class="en">Step 1: Upload your Teachable Machine model files (model.json, metadata.json, weights.bin)</p>
+        <p class="ko">1단계: Teachable Machine에서 다운로드한 모델 파일 3개를 선택해 주세요</p>
+        <input type="file" id="model-files" multiple accept=".json,.bin" class="file-input-field">
+        <button id="load-model-btn" class="input-btn active" style="margin-top: 1rem;">
+          <span class="en">Load Model</span>
+          <span class="ko">모델 로드하기</span>
+        </button>
+      </div>
+
       <div class="result-section">
         <h3 id="top-prediction" class="top-result">
           <span class="en">Awaiting analysis...</span>

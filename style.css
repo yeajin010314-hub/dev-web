@@ -489,6 +489,30 @@
     border-radius: 4px;
     transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
+
+  .analyze-action {
+    inline-size: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .model-upload-section {
+    background: oklch(0.9 0.05 30 / 0.1);
+    border: 2px dashed oklch(0.8 0.1 30 / 0.3);
+    padding: 2rem;
+    border-radius: 2rem;
+    text-align: center;
+    display: none;
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    
+    .file-input-field {
+      font-size: 0.8rem;
+    }
+  }
 }
 
 @layer animations {
